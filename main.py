@@ -271,7 +271,7 @@ def listar_dados_clinica():
         print(x)
 
 # Listar dados parceria:
-def listar_parcerias():
+def listar_dados_parcerias():
     query = """
     SELECT P.id_parceria, C.nome AS nome_clinica, C.id_clinica, CO.nome AS nome_convenio, CO.id_convenio
     FROM Parceria AS P
@@ -293,7 +293,7 @@ def listar_dados_medico():
         print(x)
 
 # Listar dados consulta:
-def listar_consultas():
+def listar_dados_consultas():
     query = """
     SELECT C.id_consulta, M.nome AS nome_medico, M.id_medico, P.nome AS nome_paciente, P.id_paciente, C.data
     FROM Consulta AS C
@@ -539,11 +539,11 @@ while True:
         elif opcao == "3":
             listar_dados_clinica()
         elif opcao == "4":
-            listar_dados_parceria()
+            listar_dados_parcerias()
         elif opcao == "5":
             listar_dados_medico()
         elif opcao == "6":
-            listar_dados_consulta()
+            listar_dados_consultas()
         elif opcao == "7":
             listar_dados_prescricao()
         elif opcao == "8":
