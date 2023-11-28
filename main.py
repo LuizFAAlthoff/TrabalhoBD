@@ -4,10 +4,10 @@ from mysql.connector import errorcode
 # Estabelece a conexão com o servidor MySQL
 try:
     conn = mysql.connector.connect(
-        host="seu_host",
-        user="seu_usuario",
-        password="sua_senha",
-        database="seu_banco_de_dados",
+        host="localhost",
+        user="root",
+        password="d4nibd1",
+        database="saude",
         port='3306'
         )
     print("Conectado ao servidor MySQL")
