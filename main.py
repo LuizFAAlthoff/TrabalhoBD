@@ -8,7 +8,7 @@ try:
         host="localhost",
         user="root",
         password="d4nibd1",
-        database="saude",
+        database="saudebd",
         port='3306'
         )
     print("Conectado ao servidor MySQL")
@@ -353,7 +353,7 @@ def excluir_paciente():
 def excluir_convenio():
     id_convenio = input("Digite o id do convenio a ser excluído: ")
     sql = "DELETE FROM Convenio WHERE id_convenio = %s"
-    value = (id_convenio)
+    value = (id_convenio,)
     cursor.execute(sql, value)
     conn.commit()
     print("Dados excluídos com sucesso!")
@@ -362,7 +362,7 @@ def excluir_convenio():
 def excluir_clinica():
     id_clinica = input("Digite o id da clínica a ser excluída: ")
     sql = "DELETE FROM Clinica WHERE id_clinica = %s"
-    value = (id_clinica)
+    value = (id_clinica,)
     cursor.execute(sql, value)
     conn.commit()
     print("Dados excluídos com sucesso!")
@@ -371,7 +371,7 @@ def excluir_clinica():
 def excluir_parceria():
     id_parceria = input("Digite o id da parceria a ser excluída: ")
     sql = "DELETE FROM Parceria WHERE id_parceria = %s"
-    value = (id_parceria)
+    value = (id_parceria,)
     cursor.execute(sql, value)
     conn.commit()
     print("Dados excluídos com sucesso!")
@@ -380,7 +380,7 @@ def excluir_parceria():
 def excluir_medico():
     id_medico = input("Digite o id do médico a ser excluído: ")
     sql = "DELETE FROM Medico WHERE id_medico = %s"
-    value = (id_medico)
+    value = (id_medico,)
     cursor.execute(sql, value)
     conn.commit()
     print("Dados excluídos com sucesso!")
@@ -389,7 +389,7 @@ def excluir_medico():
 def excluir_consulta():
     id_consulta = input("Digite o id da consulta a ser excluída: ")
     sql = "DELETE FROM Consulta WHERE id_consulta = %s"
-    value = (id_consulta)
+    value = (id_consulta,)
     cursor.execute(sql, value)
     conn.commit()
     print("Dados excluídos com sucesso!")
@@ -398,7 +398,7 @@ def excluir_consulta():
 def excluir_prescricao():
     id_prescricao = input("Digite o id da prescrição a ser excluída: ")
     sql = "DELETE FROM Prescricao WHERE id_prescricao = %s"
-    value = (id_prescricao)
+    value = (id_prescricao,)
     cursor.execute(sql, value)
     conn.commit()
     print("Dados excluídos com sucesso!")
@@ -407,7 +407,7 @@ def excluir_prescricao():
 def excluir_medicamento():
     id_medicamento = input("Digite o id do medicamento a ser excluído: ")
     sql = "DELETE FROM Medicamento WHERE id_medicamento = %s"
-    value = (id_medicamento)
+    value = (id_medicamento,)
     cursor.execute(sql, value)
     conn.commit()
     print("Dados excluídos com sucesso!")
