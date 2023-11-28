@@ -281,8 +281,8 @@ def listar_dados_parcerias():
 
     cursor.execute(query)
     resultado = cursor.fetchall()
-
-    return resultado
+    for x in resultado:
+        print(x)
 
 # Listar dados medico:
 def listar_dados_medico():
@@ -303,8 +303,8 @@ def listar_dados_consultas():
 
     cursor.execute(query)
     resultado = cursor.fetchall()
-
-    return resultado
+    for x in resultado:
+        print(x)
 
 # Listar dados prescricao:
 def listar_dados_prescricao():
@@ -318,8 +318,8 @@ def listar_dados_prescricao():
 
     cursor.execute(query)
     resultado = cursor.fetchall()
-
-    return resultado
+    for x in resultado:
+        print(x)
 
 # Listar dados medicamento:
 def listar_dados_medicamento():
