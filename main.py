@@ -82,7 +82,7 @@ def inserir_dados_parceria():
     id_clinica = input("Digite o id da clínica: ")
     id_convenio = input("Digite o id do convênio: ")
     
-    sql = "INSERT INTO Parceria (id_clinica, id_convenio) VALUES (%i, %i)"
+    sql = "INSERT INTO Parceria (id_clinica, id_convenio) VALUES (%s, %s)"
     values = (id_clinica, id_convenio)
     
     cursor.execute(sql, values)
@@ -96,7 +96,7 @@ def inserir_dados_medico():
     crm = input("Digite o crm do médico (cinco números): ")
     especialidade = input("Digite a especialidade do médico: ")
     
-    sql = "INSERT INTO Medico (id_clinica, nome, crm, especialidade) VALUES (%i, %s, %s, %s)"
+    sql = "INSERT INTO Medico (id_clinica, nome, crm, especialidade) VALUES (%s, %s, %s, %s)"
     values = (id_clinica, nome, crm, especialidade)
     
     cursor.execute(sql, values)
@@ -109,7 +109,7 @@ def inserir_dados_consulta():
     id_paciente = input("Digite o id do paciente: ")
     data = datetime.now().strftime('%Y-%m-%d')  # Converter para string no formato YYYY-MM-DD
 
-    sql = "INSERT INTO Consulta (id_medico, id_paciente, data) VALUES (%i, %i, %s)"
+    sql = "INSERT INTO Consulta (id_medico, id_paciente, data) VALUES (%s, %s, %s)"
     values = (id_medico, id_paciente, data)
 
     cursor.execute(sql, values)
@@ -122,7 +122,7 @@ def inserir_dados_prescricao():
     id_medicamento = input("Digite o id do medicamento: ")
     dose = input("Digite a dose do medicamento: ")
 
-    sql = "INSERT INTO Prescricao (id_consulta, id_medicamento, dose) VALUES (%i, %i, %s)"
+    sql = "INSERT INTO Prescricao (id_consulta, id_medicamento, dose) VALUES (%s, %s, %s)"
     values = (id_consulta, id_medicamento, dose)
     
     cursor.execute(sql, values)
@@ -153,7 +153,7 @@ def atualizar_dados_paciente():
     idade = input("Digite a idade do paciente, em anos inteiros [Ex: 23]: ")
     genero = input("Digite o genero do paciente (M/F) [Ex: M]: ")
     
-    sql = "UPDATE Paciente SET id_convenio = %i, nome = %s, cpf = %s, idade = %i, genero = %s WHERE id_paciente = %i"
+    sql = "UPDATE Paciente SET id_convenio = %s, nome = %s, cpf = %s, idade = %s, genero = %s WHERE id_paciente = %s"
     values = (id_convenio, nome, cpf, idade, genero, id_paciente)
     cursor.execute(sql, values)
     conn.commit()
@@ -165,7 +165,7 @@ def atualizar_dados_convenio():
     nome = input("Digite o nome do convenio: ")
     cnpj = input("Digite o cnpj do convenio (com pontuação) [Ex: 12.345.678/0001-99]: ")
     
-    sql = "UPDATE Convenio SET nome = %s, cnpj = %s WHERE id_convenio = %i"
+    sql = "UPDATE Convenio SET nome = %s, cnpj = %s WHERE id_convenio = %s"
     values = (nome, cnpj, id_convenio)
     cursor.execute(sql, values)
     conn.commit()
@@ -180,7 +180,7 @@ def atualizar_dados_clinica():
     cidade = input("Digite a cidade da clínica: ")
     bairro = input("Digite o bairro da clínica: ")
     
-    sql = "UPDATE Clinica SET nome = %s, cnpj = %s, uf = %s, cidade = %s, bairro = %s WHERE id_clinica = %i"
+    sql = "UPDATE Clinica SET nome = %s, cnpj = %s, uf = %s, cidade = %s, bairro = %s WHERE id_clinica = %s"
     values = (nome, cnpj, uf, cidade, bairro, id_clinica)
     cursor.execute(sql, values)
     conn.commit()
@@ -192,7 +192,7 @@ def atualizar_dados_parceria():
     id_clinica = input("Digite o id da clínica: ")
     id_convenio = input("Digite o id do convênio: ")
     
-    sql = "UPDATE Parceria SET id_clinica = %i, id_convenio = %i WHERE id_parceria = %i"
+    sql = "UPDATE Parceria SET id_clinica = %s, id_convenio = %s WHERE id_parceria = %s"
     values = (id_clinica, id_convenio, id_parceria)
     cursor.execute(sql, values)
     conn.commit()
@@ -206,7 +206,7 @@ def atualizar_dados_medico():
     crm = input("Digite o crm do médico (cinco números): ")
     especialidade = input("Digite a especialidade do médico: ")
     
-    sql = "UPDATE Medico SET id_clinica = %i, nome = %s, crm = %s, especialidade = %s WHERE id_medico = %i"
+    sql = "UPDATE Medico SET id_clinica = %s, nome = %s, crm = %s, especialidade = %s WHERE id_medico = %s"
     values = (id_clinica, nome, crm, especialidade, id_medico)
     cursor.execute(sql, values)
     conn.commit()
@@ -218,7 +218,7 @@ def atualizar_dados_consulta():
     id_medico = input("Digite o id do médico: ")
     id_paciente = input("Digite o id do paciente: ")
 
-    sql = "UPDATE Consulta SET id_medico = %i, id_paciente = %i WHERE id_consulta = %i"
+    sql = "UPDATE Consulta SET id_medico = %s, id_paciente = %s WHERE id_consulta = %s"
     values = (id_medico, id_paciente, id_consulta)
     cursor.execute(sql, values)
     conn.commit()
@@ -231,7 +231,7 @@ def atualizar_dados_prescricao():
     id_medicamento = input("Digite o id do medicamento: ")
     dose = input("Digite a dose do medicamento: ")
 
-    sql = "UPDATE Prescricao SET id_consulta = %i, id_medicamento = %i, dose = %s WHERE id_prescricao = %i"
+    sql = "UPDATE Prescricao SET id_consulta = %s, id_medicamento = %s, dose = %s WHERE id_prescricao = %s"
     values = (id_consulta, id_medicamento, dose, id_prescricao)
     cursor.execute(sql, values)
     conn.commit()
@@ -243,7 +243,7 @@ def atualizar_dados_medicamento():
     nome = input("Digite o nome do medicamento: ")
     tipo = input("Digite o tipo do medicamento: ")
     
-    sql = "UPDATE Medicamento SET nome = %s, tipo = %s WHERE id_medicamento = %i"
+    sql = "UPDATE Medicamento SET nome = %s, tipo = %s WHERE id_medicamento = %s"
     values = (nome, tipo, id_medicamento)
     cursor.execute(sql, values)
     conn.commit()
@@ -343,7 +343,7 @@ def listar_dados_medicamento():
 # Excluir dados paciente:
 def excluir_paciente():
     id_paciente = input("Digite o id do paciente a ser excluído: ")
-    sql = "DELETE FROM Paciente WHERE id_paciente = %i"
+    sql = "DELETE FROM Paciente WHERE id_paciente = %s"
     value = (id_paciente)
     cursor.execute(sql, value)
     conn.commit()
@@ -352,7 +352,7 @@ def excluir_paciente():
 # Excluir dados convenio:
 def excluir_convenio():
     id_convenio = input("Digite o id do convenio a ser excluído: ")
-    sql = "DELETE FROM Convenio WHERE id_convenio = %i"
+    sql = "DELETE FROM Convenio WHERE id_convenio = %s"
     value = (id_convenio)
     cursor.execute(sql, value)
     conn.commit()
@@ -361,7 +361,7 @@ def excluir_convenio():
 # Excluir dados clinica:
 def excluir_clinica():
     id_clinica = input("Digite o id da clínica a ser excluída: ")
-    sql = "DELETE FROM Clinica WHERE id_clinica = %i"
+    sql = "DELETE FROM Clinica WHERE id_clinica = %s"
     value = (id_clinica)
     cursor.execute(sql, value)
     conn.commit()
@@ -370,7 +370,7 @@ def excluir_clinica():
 # Excluir dados parceria:
 def excluir_parceria():
     id_parceria = input("Digite o id da parceria a ser excluída: ")
-    sql = "DELETE FROM Parceria WHERE id_parceria = %i"
+    sql = "DELETE FROM Parceria WHERE id_parceria = %s"
     value = (id_parceria)
     cursor.execute(sql, value)
     conn.commit()
@@ -379,7 +379,7 @@ def excluir_parceria():
 # Excluir dados medico:
 def excluir_medico():
     id_medico = input("Digite o id do médico a ser excluído: ")
-    sql = "DELETE FROM Medico WHERE id_medico = %i"
+    sql = "DELETE FROM Medico WHERE id_medico = %s"
     value = (id_medico)
     cursor.execute(sql, value)
     conn.commit()
@@ -388,7 +388,7 @@ def excluir_medico():
 # Excluir dados consulta:
 def excluir_consulta():
     id_consulta = input("Digite o id da consulta a ser excluída: ")
-    sql = "DELETE FROM Consulta WHERE id_consulta = %i"
+    sql = "DELETE FROM Consulta WHERE id_consulta = %s"
     value = (id_consulta)
     cursor.execute(sql, value)
     conn.commit()
@@ -397,7 +397,7 @@ def excluir_consulta():
 # Excluir dados prescricao:
 def excluir_prescricao():
     id_prescricao = input("Digite o id da prescrição a ser excluída: ")
-    sql = "DELETE FROM Prescricao WHERE id_prescricao = %i"
+    sql = "DELETE FROM Prescricao WHERE id_prescricao = %s"
     value = (id_prescricao)
     cursor.execute(sql, value)
     conn.commit()
@@ -406,7 +406,7 @@ def excluir_prescricao():
 # Excluir dados medicamento:
 def excluir_medicamento():
     id_medicamento = input("Digite o id do medicamento a ser excluído: ")
-    sql = "DELETE FROM Medicamento WHERE id_medicamento = %i"
+    sql = "DELETE FROM Medicamento WHERE id_medicamento = %s"
     value = (id_medicamento)
     cursor.execute(sql, value)
     conn.commit()
