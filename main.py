@@ -32,9 +32,9 @@ cursor = conn.cursor()
 def inserir_dados_paciente():
     id_convenio = input("Digite o id do convenio: ")
     nome = input("Digite o nome do paciente: ")
-    cpf = input("Digite o cpf do paciente (com pontuação): ")
-    idade = input("Digite a idade do paciente, em anos inteiros: ")
-    genero = input("Digite o genero do paciente (M/F): ")
+    cpf = input("Digite o cpf do paciente (com pontuação) [Ex: 123.456.789-00]: ")
+    idade = input("Digite a idade do paciente, em anos inteiros [Ex: 23]: ")
+    genero = input("Digite o gênero do paciente [Ex: M]: ")
     
     sql = "INSERT INTO Paciente (id_convenio, nome, cpf, idade, genero) VALUES (%i, %s, %s, %i, %s)"
     values = (id_convenio, nome, cpf, idade, genero)
@@ -46,7 +46,7 @@ def inserir_dados_paciente():
 # Inserir dados convenio:
 def inserir_dados_convenio():
     nome = input("Digite o nome do convenio: ")
-    cnpj = input("Digite o cnpj do convenio (com pontuação): ")
+    cnpj = input("Digite o cnpj do convenio (com pontuação) [Ex: 12.345.678/0001-99]: ")
     
     sql = "INSERT INTO Convenio (nome, cnpj) VALUES (%s, %s)"
     values = (nome, cnpj)
@@ -58,8 +58,8 @@ def inserir_dados_convenio():
 # Inserir dados clinica:
 def inserir_dados_clinica():
     nome = input("Digite o nome da clínica: ")
-    cnpj = input("Digite o id da clínica (com pontuação): ")
-    uf = input("Digite a uf da clínica: ")
+    cnpj = input("Digite o cnpj da clínica (com pontuação) [Ex: 12.345.678/0001-99]: ")
+    uf = input("Digite a UF da clínica: ")
     cidade = input("Digite a cidade da clínica: ")
     bairro = input("Digite o bairro da clínica: ")
     
@@ -86,7 +86,7 @@ def inserir_dados_parceria():
 def inserir_dados_medico():
     id_clinica = input("Digite o id da clínica: ")
     nome = input("Digite o nome do médico: ")
-    crm = input("Digite o crm do médico (com pontuação): ")
+    crm = input("Digite o crm do médico (cinco números): ")
     especialidade = input("Digite a especialidade do médico: ")
     
     sql = "INSERT INTO Medico (id_clinica, nome, crm, especialidade) VALUES (%i, %s, %s, %s)"
@@ -142,9 +142,9 @@ def atualizar_dados_paciente():
     id_paciente = input("Digite o id do paciente a ser alterado: ")
     id_convenio = input("Digite o id do convenio: ")
     nome = input("Digite o nome do paciente: ")
-    cpf = input("Digite o cpf do paciente (com pontuação): ")
-    idade = input("Digite a idade do paciente, em anos inteiros: ")
-    genero = input("Digite o genero do paciente (M/F): ")
+    cpf = input("Digite o cpf do paciente (com pontuação)  [Ex: 123.456.789-00]: ")
+    idade = input("Digite a idade do paciente, em anos inteiros [Ex: 23]: ")
+    genero = input("Digite o genero do paciente (M/F) [Ex: M]: ")
     
     sql = "UPDATE Paciente SET id_convenio = %i, nome = %s, cpf = %s, idade = %i, genero = %s WHERE id_paciente = %i"
     values = (id_convenio, nome, cpf, idade, genero, id_paciente)
@@ -156,7 +156,7 @@ def atualizar_dados_paciente():
 def atualizar_dados_convenio():
     id_convenio = input("Digite o id do convenio a ser alterado: ")
     nome = input("Digite o nome do convenio: ")
-    cnpj = input("Digite o cnpj do convenio (com pontuação): ")
+    cnpj = input("Digite o cnpj do convenio (com pontuação) [Ex: 12.345.678/0001-99]: ")
     
     sql = "UPDATE Convenio SET nome = %s, cnpj = %s WHERE id_convenio = %i"
     values = (nome, cnpj, id_convenio)
@@ -168,7 +168,7 @@ def atualizar_dados_convenio():
 def atualizar_dados_clinica():
     id_clinica = input("Digite o id da clínica a ser alterada: ")
     nome = input("Digite o nome da clínica: ")
-    cnpj = input("Digite o cnpj da clínica (com pontuação): ")
+    cnpj = input("Digite o cnpj da clínica (com pontuação) [Ex: 12.345.678/0001-99]: ")
     uf = input("Digite a uf da clínica: ")
     cidade = input("Digite a cidade da clínica: ")
     bairro = input("Digite o bairro da clínica: ")
@@ -196,7 +196,7 @@ def atualizar_dados_medico():
     id_medico = input("Digite o id do médico a ser alterado: ")
     id_clinica = input("Digite o id da clínica: ")
     nome = input("Digite o nome do médico: ")
-    crm = input("Digite o crm do médico (com pontuação): ")
+    crm = input("Digite o crm do médico (cinco números): ")
     especialidade = input("Digite a especialidade do médico: ")
     
     sql = "UPDATE Medico SET id_clinica = %i, nome = %s, crm = %s, especialidade = %s WHERE id_medico = %i"
