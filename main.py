@@ -344,7 +344,7 @@ def listar_dados_medicamento():
 def excluir_paciente():
     id_paciente = input("Digite o id do paciente a ser excluído: ")
     sql = "DELETE FROM Paciente WHERE id_paciente = %s"
-    value = (id_paciente)
+    value = (id_paciente,)
     cursor.execute(sql, value)
     conn.commit()
     print("Dados excluídos com sucesso!")
