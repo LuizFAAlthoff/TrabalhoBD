@@ -29,19 +29,26 @@ cursor = conn.cursor()
 #####################################################################################################
 
 # Inserir dados paciente:
+import mysql.connector
+
+# Supondo que você já tenha uma conexão 'conn' e um cursor 'cursor' configurados
+
 def inserir_dados_paciente():
     id_convenio = input("Digite o id do convenio: ")
     nome = input("Digite o nome do paciente: ")
     cpf = input("Digite o cpf do paciente (com pontuação) [Ex: 123.456.789-00]: ")
-    idade = input("Digite a idade do paciente, em anos inteiros [Ex: 23]: ")
+    idade = int(input("Digite a idade do paciente, em anos inteiros [Ex: 23]: "))  # Convertendo para inteiro
     genero = input("Digite o gênero do paciente [Ex: M]: ")
-    
-    sql = "INSERT INTO Paciente (id_convenio, nome, cpf, idade, genero) VALUES (%i, %s, %s, %i, %s)"
+
+    sql = "INSERT INTO Paciente (id_convenio, nome, cpf, idade, genero) VALUES (%s, %s, %s, %s, %s)"
     values = (id_convenio, nome, cpf, idade, genero)
 
     cursor.execute(sql, values)
     conn.commit()
     print("Dados inseridos com sucesso!")
+
+# Chame a função inserir_dados_paciente() onde for necessário no seu código.
+1
 
 # Inserir dados convenio:
 def inserir_dados_convenio():
@@ -424,8 +431,9 @@ def consultar_top_convenios(cursor):
 
     cursor.execute(query)
     resultado = cursor.fetchall()
-
-    return resultado
+    for x in resultado:
+        print(x)
+    
 
 # Remeios mais prescritos
 def consultar_remedios_mais_prescritos(cursor):
@@ -439,8 +447,8 @@ def consultar_remedios_mais_prescritos(cursor):
 
     cursor.execute(query)
     resultado = cursor.fetchall()
-
-    return resultado
+    for x in resultado:
+        print(x)
 
 # Médicos com mais atendimentos e a clínica onde trabalham com data da consulta
 def consultar_medicos_mais_consultas(cursor):
@@ -455,8 +463,8 @@ def consultar_medicos_mais_consultas(cursor):
 
     cursor.execute(query)
     resultado = cursor.fetchall()
-
-    return resultado
+    for x in resultado:
+        print(x)
 
 # Interface
 while True:
@@ -464,7 +472,10 @@ while True:
     print("2 - Atualizar dados")
     print("3 - Listar dados")
     print("4 - Excluir dados")
-    print("5 - Sair")
+    print("5 - [Query] Top 3 convênios que possuem um maior número de clientes (pacientes)")
+    print("6 - [Query] Remédios mais prescritos, retornando o nome do remédio e a quantidade de vezes prescrito")
+    print("7 - [Query] Médicos que realizaram mais consultas, ordenando do maior para o menor, retornando o total de consultas realizadas, o nome do médico, o nome da clínica e a data da consulta realizada")
+    print("8 - Sair")
     opcao = input("Digite a opção desejada: ")
     if opcao == "1":
         print("1 - Inserir dados paciente")
@@ -579,6 +590,12 @@ while True:
         else:
             print("Opção inválida!")
     elif opcao == "5":
+        consultar_top_convenios(cursor)
+    elif opcao == "6":
+        consultar_remedios_mais_prescritos(cursor)
+    elif opcao == "7":
+        consultar_medicos_mais_consultas(cursor)
+    elif opcao == "8":
         break
 
 # Fecha o cursor e a conexão
