@@ -105,7 +105,7 @@ def inserir_dados_consulta():
     sql = "INSERT INTO Consulta (id_medico, id_paciente) VALUES (%s, %s)"
     value = (id_medico, id_paciente)
     
-    cursor.execute(sql, values)
+    cursor.execute(sql, value)
     conn.commit()
     print("Dados inseridos com sucesso!")
 
